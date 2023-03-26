@@ -1,18 +1,30 @@
 import React from 'react'
 import {RouterProvider, createBrowserRouter} from 'react-router-dom'
-import {ErrorBoundary, NotFound} from 'components'
-import {Dashboard} from 'containers'
+import {About, ErrorBoundary, NotFound} from 'components'
+import {Dashboard, Layout} from 'containers'
 
 const Routes = () => {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Dashboard />,
+      element: <Layout />,
       errorElement: <ErrorBoundary />,
-    },
-    {
-      path: '*',
-      element: <NotFound />,
+      children: [
+        {
+          path: '/',
+          element: <Dashboard />,
+          errorElement: <ErrorBoundary />,
+        },
+        {
+          path: '/about',
+          element: <About />,
+          errorElement: <ErrorBoundary />,
+        },
+        {
+          path: '*',
+          element: <NotFound />,
+        },
+      ],
     },
   ])
   return <RouterProvider router={router} />
