@@ -1,15 +1,19 @@
 import React from 'react'
-import {NavigationBar} from 'components'
-import {LayoutContent, LayoutWrapper} from './layout.styled'
+import {Footer, Header, NavigationBar} from 'components'
+import {ContentWrapper, LayoutContent, LayoutWrapper} from './layout.styled'
 import {Outlet} from 'react-router-dom'
 
 export const Layout = () => {
   return (
     <LayoutWrapper>
-      <NavigationBar />
+      <Header />
       <LayoutContent>
-        <Outlet />
+        <NavigationBar />
+        <ContentWrapper>
+          <Outlet />
+        </ContentWrapper>
       </LayoutContent>
+      <Footer />
     </LayoutWrapper>
   )
 }
