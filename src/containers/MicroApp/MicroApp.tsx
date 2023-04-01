@@ -18,7 +18,7 @@ export const MicroApp = ({name, containerId, host, params}: MicroAppProps) => {
       microAppObj.mount(containerId, params)
       setIsLoaded(true)
     } else {
-      const errorMessage = `Failed to mount ${name}`
+      const errorMessage = `Failed to mount ${name}, please try again.`
       console.error(errorMessage)
       setAppError(errorMessage)
     }
@@ -69,9 +69,7 @@ export const MicroApp = ({name, containerId, host, params}: MicroAppProps) => {
         })
         .catch(error => {
           console.error(error)
-          let message
-          if (error instanceof Error) message = error.message
-          setAppError(`Failed to fetch ${name}: ${message}`)
+          setAppError(`Failed to fetch ${name}, please try again`)
         })
     }
 
