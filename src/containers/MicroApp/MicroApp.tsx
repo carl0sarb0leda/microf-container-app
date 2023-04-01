@@ -24,6 +24,11 @@ export const MicroApp = ({name, containerId, host, params}: MicroAppProps) => {
     }
   }, [containerId, name, params])
 
+  const getStaticRoute = (fileRoute: string) => {
+    const staticRoute = fileRoute.split('static').slice(-1)
+    return `/static${staticRoute}`
+  }
+
   useEffect(() => {
     const bootstrapApp = async () => {
       fetch(`${host}/asset-manifest.json`)
@@ -34,7 +39,7 @@ export const MicroApp = ({name, containerId, host, params}: MicroAppProps) => {
             const cssFile = manifest.files['main.css']
             if (cssFile) {
               const cssLink = document.createElement('link')
-              cssLink.href = `${host}${cssFile}`
+              cssLink.href = `${host}${getStaticRoute(cssFile)}`
               cssLink.rel = 'stylesheet'
               cssLink.onload = () => {
                 resolve()
@@ -49,7 +54,7 @@ export const MicroApp = ({name, containerId, host, params}: MicroAppProps) => {
               const script = document.createElement('script')
               script.id = scriptId
               script.crossOrigin = ''
-              const appJs = `${host}${jsFile}`
+              const appJs = `${host}${getStaticRoute(jsFile)}`
               script.src = appJs
               script.onload = () => {
                 resolve()
