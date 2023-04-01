@@ -61,6 +61,7 @@ export const Dashboard = () => {
           response => response.status === 'rejected',
         )
         if (errors.length) {
+          console.table(errors)
           alert(
             'Some data requests have failed, please try again or check the logs',
           )
