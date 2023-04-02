@@ -1,7 +1,7 @@
 {
   "name": "microf-container-app",
   "version": "1.0.0",
-  "homepage": "http://carl0sarb0leda.github.io/microf-container-app",
+  "homepage": "http://carl0sarb0leda.github.io",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
