@@ -3,6 +3,7 @@ import {RouterProvider, createBrowserRouter} from 'react-router-dom'
 import {About, ErrorBoundary, NotFound} from 'components'
 import {Dashboard, Layout, MicroApp} from 'containers'
 import {PortalApp} from 'lib/constants'
+import {customLoader} from 'utils/fn-helper'
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -35,6 +36,7 @@ const Routes = () => {
         {
           path: '*',
           element: <NotFound />,
+          loader: customLoader,
         },
       ],
     },
