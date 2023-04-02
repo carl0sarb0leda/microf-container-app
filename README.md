@@ -74,4 +74,23 @@ Your app is ready to be deployed!
 
 # Architecture v1.0.0
 
-TODO
+![Blog Dapp architecture](./src/assets/microapps.png)
+
+## Flows
+
+1. As design type we use a
+   [vertical split](https://www.oreilly.com/library/view/building-micro-frontends/9781492082989/ch04.html)
+   approach where each micro-app (or dev team) is responsible for a business
+   domain. These are stored in any storage service and distributed through a
+   CDN. For this sample, we have the `/dashboard` and `/portal` sections where
+   the user can check data analytics and login into the clinical portal
+   respectively.
+2. Composition of apps is handled on the client side, pulling and mounting JS,
+   and CSS from the remote
+   [manifest file](https://developer.mozilla.org/en-US/docs/Web/Manifest).
+3. Routing is client side as well, in this case, handled by
+   [React Router](https://reactrouter.com/en/main) in the container app and each
+   micro-app
+4. Finally communication can be done through web storage or using custom events
+   dispatched via the
+   [window interface](https://developer.mozilla.org/en-US/docs/Web/API/Window)
