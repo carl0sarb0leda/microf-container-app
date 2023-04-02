@@ -3,7 +3,7 @@
 Frontend application to display global medical dashboards and clinical portal
 for health personnel.
 
-This application has been designed as
+This application has been designed as container
 [micro-app](https://martinfowler.com/articles/micro-frontends.html).
 
 In production, the application can be built and placed in any storage service
@@ -27,16 +27,14 @@ Author: Carlos Arboleda carlosaepn@gmail.com
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [React](https://reactjs.org/)
+- [React Router](https://reactrouter.com/en/main)
 - [Styled Components](https://styled-components.com/)
 - [Chart JS](https://www.chartjs.org/)
 - [Fontawesome](https://fontawesome.com/v5/docs/web/use-with/react)
 - [Yarn](https://yarnpkg.com/)
 
-The routing structure was implemented using
-[React Router](https://reactrouter.com/en/main)
-
-The application was built considering
-[web accessibility standards](https://www.w3.org/WAI/)
+Other micro-apps mounted thrown this application are independent and have
+different tech stacks.
 
 ## Structure
 
@@ -76,7 +74,7 @@ Your app is ready to be deployed!
 
 ![Blog Dapp architecture](./src/assets/microapps.png)
 
-## Flows
+## Flow
 
 1. As design type we use a
    [vertical split](https://www.oreilly.com/library/view/building-micro-frontends/9781492082989/ch04.html)
