@@ -1,17 +1,24 @@
 # Med App
 
-Frontend application to display global medical dashboards and clinical portal
-for health personnel.
+Frontend application which displays global medical dashboards and gives access
+to a clinical portal for health personnel. The main purpose of this application
+is to demonstrate a use case of
+[micro-frontend](https://martinfowler.com/articles/micro-frontends.html)
+architectures. For more details on the conceptualisation used in this sample,
+please have a look at
+[Building Micro-Frontends](https://www.oreilly.com/library/view/building-micro-frontends/9781492082989/)
+concepts.
 
-This application has been designed as container
-[micro-app](https://martinfowler.com/articles/micro-frontends.html).
+For this sample, we are using
+[Vercel deployment](https://vercel.com/docs/concepts/deployments/overview) for
+the container app while [GitHub pages](https://docs.github.com/en/pages) is
+enabling a public host that serves the files needed from the micro-apps to be
+mounted in the client side.
 
-In production, the application can be built and placed in any storage service
-like [AWS S3](https://aws.amazon.com/s3/) or
+However, the application can be built and placed in any storage service like
+[AWS S3](https://aws.amazon.com/s3/) or
 [Google storage](https://cloud.google.com/storage/docs/introduction) and be
-served through a CDN. For this sample, we are using
-[GitHub pages](https://docs.github.com/en/pages) to enable a public host that
-serves the files needed to mount it in the container app.
+served through any CDN.
 
 ## Micro-apps
 
