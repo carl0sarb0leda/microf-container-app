@@ -1,46 +1,101 @@
-# Getting Started with Create React App
+# Med App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Frontend application which displays global medical dashboards and gives access
+to a clinical portal for health personnel. The main purpose of this application
+is to demonstrate a use case of
+[micro-frontend](https://martinfowler.com/articles/micro-frontends.html)
+architectures. For more details on the conceptualisation used in this sample,
+please have a look at
+[Building Micro-Frontends](https://www.oreilly.com/library/view/building-micro-frontends/9781492082989/)
+concepts.
 
-## Available Scripts
+For this sample, we are using
+[Vercel deployment](https://vercel.com/docs/concepts/deployments/overview) for
+the container app while [GitHub pages](https://docs.github.com/en/pages) is
+enabling a public host that serves the files needed from the micro-apps to be
+mounted in the client side.
 
-In the project directory, you can run:
+However, the application can be built and placed in any storage service like
+[AWS S3](https://aws.amazon.com/s3/) or
+[Google storage](https://cloud.google.com/storage/docs/introduction) and be
+served through any CDN.
 
-### `yarn start`
+## Micro-apps
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This application can serve and route multiple micro-apps, for this sample the
+following has been defined:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- [Portal app](https://github.com/carl0sarb0leda/microf-ca-app) ( App to handle
+  clinicians and patients).
 
-### `yarn test`
+Author: Carlos Arboleda carlosaepn@gmail.com
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tech Stack
 
-### `yarn build`
+- [TypeScript](https://www.typescriptlang.org/)
+- [React](https://reactjs.org/)
+- [React Router](https://reactrouter.com/en/main)
+- [Styled Components](https://styled-components.com/)
+- [Chart JS](https://www.chartjs.org/)
+- [Fontawesome](https://fontawesome.com/v5/docs/web/use-with/react)
+- [Yarn](https://yarnpkg.com/)
+
+Other micro-apps mounted thrown this application are independent and have
+different tech stacks.
+
+## Structure
+
+- `/api` contains the handlers to fetch api
+
+- `/components` folder contains presentational components with styles
+
+- `/containers` folder contains components with more focus on handling data and
+  behavior
+
+- `/lib` folder contains app enums
+
+- `/router` folder contains the routing logic for protected paths
+
+## Running the App
+
+```shell
+yarn start
+```
+
+This should start up your browser listen on PORT: 3301.
+
+## Production Build
+
+```shell
+yarn build
+```
 
 Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+It correctly bundles React in production mode and optimizes the build for the best
+performance.
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Architecture v1.0.0
 
-### `yarn eject`
+![Blog Dapp architecture](./src/assets/microapps.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Flow
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. As design type we use a
+   [vertical split](https://www.oreilly.com/library/view/building-micro-frontends/9781492082989/ch04.html)
+   approach where each micro-app (or dev team) is responsible for a business
+   domain. These are stored in any storage service and distributed through a
+   CDN. For this sample, we have the `/dashboard` and `/portal` sections where
+   the user can check data analytics and login into the clinical portal
+   respectively.
+2. Composition of apps is handled on the client side, pulling and mounting JS,
+   and CSS from the remote
+   [manifest file](https://developer.mozilla.org/en-US/docs/Web/Manifest).
+3. Routing is client side as well, in this case, handled by
+   [React Router](https://reactrouter.com/en/main) in the container app and each
+   micro-app
+4. Finally communication can be done through web storage or using custom events
+   dispatched via the
+   [window interface](https://developer.mozilla.org/en-US/docs/Web/API/Window)
